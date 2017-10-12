@@ -1,0 +1,76 @@
+{
+  "name": "eslint-config-radiofrance",
+  "version": "0.0.0",
+  "description": "ESLint shareable config for Radio France",
+  "license": "CECILL-B",
+  "repository": "radiofrance/eslint-config-radiofrance",
+  "author": {
+    "name": "Radio France",
+    "email": "opensource@radiofrance.com",
+    "url": "www.radiofrance.fr"
+  },
+  "engines": {
+    "node": ">=6"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "test": "ava"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "❤️",
+    "space",
+    "spaces",
+    "eslintconfig",
+    "xo",
+    "code",
+    "quality",
+    "style",
+    "lint",
+    "linter",
+    "jscs",
+    "jshint",
+    "jslint",
+    "eslint",
+    "validate",
+    "code style",
+    "standard",
+    "strict",
+    "check",
+    "checker",
+    "verify",
+    "enforce",
+    "hint",
+    "simple",
+  "sindre"
+  ],
+  "dependencies": {
+    "eslint-config-xo-space": "^0.16.0"
+  },
+  "devDependencies": {
+    "ava": "*",
+    "eslint": "^4.6.0",
+    "is-plain-obj": "^1.0.0",
+    "temp-write": "^3.1.0"
+  },
+  "peerDependencies": {
+    "eslint": ">=4.6.0"
+  },
+  "eslintConfig": {
+    "extends": "xo-space/esnext",
+    "rules": {
+      "capitalized-comments": "off",
+      "camelcase": "warn",
+      "no-console": "error",
+      "no-unused-vars": [
+        "error",
+        {
+          "argsIgnorePattern": "next"
+        }
+      ],
+      "prefer-promise-reject-errors": "warn"
+    }
+  }
+}
