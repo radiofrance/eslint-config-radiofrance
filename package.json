@@ -47,7 +47,7 @@
     "sindre"
   ],
   "dependencies": {
-    "eslint-config-xo-space": "^0.16.0"
+    "eslint-config-xo-space": "^0.17.0"
   },
   "devDependencies": {
     "ava": "*",
