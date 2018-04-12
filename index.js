@@ -1,7 +1,8 @@
 'use strict';
 
 module.exports = {
-  extends: 'xo-space/esnext',
+  plugins: ['promise'],
+  extends: ['xo-space/esnext', 'plugin:promise/recommended'],
   rules: {
     'capitalized-comments': 'off',
     camelcase: 'warn',

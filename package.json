@@ -47,11 +47,12 @@
     "sindre"
   ],
   "dependencies": {
-    "eslint-config-xo-space": "^0.18.0"
+    "eslint-config-xo-space": "^0.18.0",
+    "eslint-plugin-promise": "^3.7.0"
   },
   "devDependencies": {
     "ava": "^0.25.0",
-    "eslint": "^4.17.0",
+    "eslint": "^4.18.2",
     "is-plain-obj": "^1.0.0",
     "temp-write": "^3.4.0"
   },
