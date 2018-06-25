@@ -2,8 +2,9 @@
 
 module.exports = {
   plugins: ['promise'],
-  extends: ['xo-space/esnext', 'plugin:promise/recommended'],
+  extends: ['xo/esnext', 'plugin:promise/recommended'],
   rules: {
+    indent: [2, 2, {SwitchCase: 1}],
     'capitalized-comments': 'off',
     camelcase: 'warn',
     'no-console': 'error',
