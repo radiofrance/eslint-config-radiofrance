@@ -14,6 +14,8 @@ module.exports = {
         argsIgnorePattern: 'next'
       }
     ],
-    'prefer-promise-reject-errors': 'warn'
+    'prefer-promise-reject-errors': 'warn',
+
+    'promise/no-return-wrap': 'off'
   }
 };
