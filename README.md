@@ -1,6 +1,6 @@
 # eslint-config-radiofrance [![Build Status](https://travis-ci.org/radiofrance/eslint-config-radiofrance.svg?branch=master)](https://travis-ci.org/radiofrance/eslint-config-radiofrance)
 
-> ESLint [shareable config](http://eslint.org/docs/developer-guide/shareable-configs.html) extend from [eslint-config-xo-space](https://github.com/sindresorhus/eslint-config-xo-space)
+> ESLint [shareable config](http://eslint.org/docs/developer-guide/shareable-configs.html) extend from [eslint-config-xo](https://github.com/sindresorhus/eslint-config-xo)
 
 ## Install
 
@@ -23,7 +23,7 @@ Add some ESLint config to your `package.json`:
 
 ## Related
 
-- [eslint-config-xo-space](https://github.com/sindresorhus/eslint-config-xo-space) - ESLint shareable config for XO
+- [eslint-config-xo](https://github.com/sindresorhus/eslint-config-xo) - ESLint shareable config for XO
 
 ## License
 
