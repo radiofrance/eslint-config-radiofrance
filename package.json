@@ -47,12 +47,12 @@
     "sindre"
   ],
   "dependencies": {
-    "eslint-config-xo": "^0.32.1",
-    "eslint-plugin-promise": "^4.1.1"
+    "eslint-config-xo": "^0.38.0",
+    "eslint-plugin-promise": "^5.1.0"
   },
   "devDependencies": {
     "ava": "^3.7.1",
-    "eslint": "^7.5.0",
+    "eslint": "^7.32.0",
     "is-plain-obj": "^2.1.0"
   },
   "peerDependencies": {

@@ -2,7 +2,7 @@
 
 module.exports = {
   plugins: ['promise'],
-  extends: ['xo/esnext', 'plugin:promise/recommended'],
+  extends: ['xo', 'plugin:promise/recommended'],
   rules: {
     indent: [2, 2, {SwitchCase: 1}],
     'capitalized-comments': 'off',
