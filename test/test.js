@@ -1,29 +1,29 @@
 const path = require('path');
 const test = require('ava');
 const isPlainObj = require('is-plain-obj');
-const eslint = require('eslint');
+const {ESLint} = require('eslint');
 
-function runEslint(str, conf) {
-  const linter = new eslint.CLIEngine({
+async function runEslint(str, conf) {
+  const linter = new ESLint({
     useEslintrc: false,
-    configFile: path.join(__dirname, conf)
+    overrideConfigFile: path.join(__dirname, conf)
   });
 
-  return linter.executeOnText(str).results[0].messages;
+  return (await linter.lintText(str))[0].messages;
 }
 
-test('main', t => {
+test('main', async t => {
   const conf = require('../');
   t.true(isPlainObj(conf));
   t.true(isPlainObj(conf.rules));
-  t.is(runEslint('\'use strict\';\nconst x = true;\n\nif (x) {\n  // not empty\n}\n', '../index.js').length, 0);
+  t.is((await runEslint('\'use strict\';\nconst x = true;\n\nif (x) {\n  // not empty\n}\n', '../index.js')).length, 0);
 });
 
-test('main error no-console', t => {
+test('main error no-console', async t => {
   const conf = require('../');
   t.true(isPlainObj(conf));
   t.true(isPlainObj(conf.rules));
 
-  const errors = runEslint('\'use strict\';\nconst x = true;\n\nif (x) {\n  console.log();\n}\n', '../index.js');
+  const errors = await runEslint('\'use strict\';\nconst x = true;\n\nif (x) {\n  console.log();\n}\n', '../index.js');
   t.is(errors[0].ruleId, 'no-console');
 });
