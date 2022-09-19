@@ -19,8 +19,6 @@ module.exports = {
     'promise/no-return-wrap': 'off',
     
     // disable rules in prettier scope
-    '@typescript-eslint/object-curly-spacing': 'off',
-    '@typescript-eslint/quotes': 'off',
     'no-mixed-operators': 'off',
     'operator-linebreak': 'off',
   }
