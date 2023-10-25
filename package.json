@@ -52,7 +52,7 @@
   },
   "devDependencies": {
     "ava": "^3.7.1",
-    "eslint": "^8.5.0",
+    "eslint": "^8.52.0",
     "is-plain-obj": "^3.0.0"
   },
   "peerDependencies": {
