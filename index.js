@@ -11,11 +11,18 @@ module.exports = {
     'no-unused-vars': [
       'error',
       {
-        argsIgnorePattern: 'next'
-      }
+        argsIgnorePattern: 'next',
+      },
     ],
     'prefer-promise-reject-errors': 'warn',
-
-    'promise/no-return-wrap': 'off'
-  }
+    'promise/no-return-wrap': 'off',
+  },
+  overrides: [
+    {
+      extends: ['plugin:package-json/recommended'],
+      files: ['package.json'],
+      parser: 'jsonc-eslint-parser',
+      plugins: ['package-json'],
+    },
+  ],
 };
