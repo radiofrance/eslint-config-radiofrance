@@ -23,6 +23,8 @@ module.exports = {
       rules: {
         // Console should not be used in project. Instead use our internal logger.
         'no-console': 'error',
+        // Override from eslint-config-xo to avoid unnecessary newline in file.
+        'object-curly-newline': 'error',
         // For each require/import, we should a explicit file extension.
         'import/extensions': [
           'error',
