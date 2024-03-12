@@ -19,12 +19,20 @@ module.exports = {
     },
     {
       files: ['*.{js,ts}'],
-      plugins: ['import'],
+      plugins: ['import', 'promise'],
+      extends: ['xo', 'plugin:promise/recommended'],
       rules: {
+        // Disable because sometimes we need to comment some code.
+        'capitalized-comments': 'off',
         // Console should not be used in project. Instead use our internal logger.
         'no-console': 'error',
         // Override from eslint-config-xo to avoid unnecessary newline in file.
-        'object-curly-newline': 'error',
+        'object-curly-newline': [
+          'error',
+          {
+            consistent: true,
+          },
+        ],
         // For each require/import, we should a explicit file extension.
         'import/extensions': [
           'error',
@@ -45,8 +53,6 @@ module.exports = {
     },
     {
       files: ['*.js'],
-      plugins: ['promise'],
-      extends: ['xo', 'plugin:promise/recommended'],
       rules: {
         // Use space indent instead of tab.
         indent: [2, 2, {SwitchCase: 1}],
@@ -54,8 +60,6 @@ module.exports = {
         camelcase: 'warn',
         'prefer-promise-reject-errors': 'warn',
         'promise/no-return-wrap': 'warn',
-        // Disable because sometimes we need to comment some code.
-        'capitalized-comments': 'off',
         // Expressjs have a unused params "next" in middleware.
         'no-unused-vars': [
           'error',
@@ -67,11 +71,8 @@ module.exports = {
     },
     {
       files: ['*.ts'],
-      plugins: ['promise'],
-      extends: ['xo', 'xo-typescript/space', 'plugin:promise/recommended'],
+      extends: ['xo-typescript/space'],
       rules: {
-        // Disable because sometimes we need to comment some code.
-        'capitalized-comments': 'off',
         // Override naming convention rule to allow `snake_case`.
         '@typescript-eslint/naming-convention': ruleNamingConventionOverride,
         // Override this rule to allow usage of null and undefined.
