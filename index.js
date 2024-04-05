@@ -49,6 +49,15 @@ module.exports = {
             },
           },
         ],
+        'new-cap': [
+          'error',
+          {
+            newIsCap: true,
+            capIsNew: true,
+            // Override for typebox usage
+            capIsNewExceptionPattern: '^Type\\..',
+          },
+        ],
       },
     },
     {
