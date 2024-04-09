@@ -49,6 +49,15 @@ module.exports = {
             },
           },
         ],
+        // Override from eslint-config-xo to allow Typebox usage.
+        'new-cap': [
+          'error',
+          {
+            newIsCap: true,
+            capIsNew: true,
+            capIsNewExceptionPattern: '^Type\\..',
+          },
+        ],
       },
     },
     {
