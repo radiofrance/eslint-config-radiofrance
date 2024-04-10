@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-radiofrance",
-  "version": "5.0.3",
+  "version": "5.0.4",
   "description": "ESLint shareable config for Radio France",
   "license": "CECILL-B",
   "repository": "radiofrance/eslint-config-radiofrance",
