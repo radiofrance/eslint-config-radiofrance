@@ -12,12 +12,6 @@ ruleNamingConventionOverride[1].format = [
 module.exports = {
   overrides: [
     {
-      files: ['package.json'],
-      plugins: ['package-json'],
-      extends: ['plugin:package-json/recommended'],
-      parser: 'jsonc-eslint-parser',
-    },
-    {
       files: ['*.{js,ts}'],
       plugins: ['import', 'promise'],
       extends: ['xo', 'plugin:promise/recommended'],
