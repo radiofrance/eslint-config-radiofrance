@@ -10,14 +10,17 @@
     "url": "https://www.radiofrance.fr"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=22.12.0"
   },
+  "type": "module",
+  "main": "source/config.js",
   "scripts": {
-    "lint": "eslint .",
+    "build-check": "tsc --noEmit",
+    "lint": "eslint",
     "test": "ava"
   },
   "files": [
-    "index.js"
+    "source"
   ],
   "keywords": [
     "❤️",
@@ -47,26 +50,17 @@
     "sindre"
   ],
   "dependencies": {
-    "@typescript-eslint/parser": "^7.0.2",
-    "eslint-config-xo": "^0.44.0",
-    "eslint-config-xo-typescript": "^4.0.0"
+    "@eslint/compat": "^1.2.6",
+    "eslint-config-xo": "^0.46.0",
+    "eslint-config-xo-typescript": "^7.0.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-promise": "^7.2.1"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^7.0.2",
-    "ava": "^6.1.2",
-    "eslint": "^8.52.0",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-promise": "^6.1.1",
-    "typescript": "^5.3.3"
+    "@types/node": "^22.13.1",
+    "ava": "^6.1.2"
   },
   "peerDependencies": {
-    "@typescript-eslint/eslint-plugin": "^7.0.2",
-    "eslint": "^8.0.0",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-promise": "^6.1.1",
-    "typescript": "^5.0.0"
-  },
-  "eslintConfig": {
-    "extends": "./index.js"
+    "eslint": "^9.19.0"
   }
 }

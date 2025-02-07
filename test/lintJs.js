@@ -1,34 +1,19 @@
-const test = require('ava');
-const {ESLint} = require('eslint');
+import test from 'ava';
+import {assertError, runEslint} from './helper/utils.js';
 
-const config = require('../index.js');
-
-const hasRule = (errors, ruleId) => errors.some(x => x.ruleId === ruleId);
-
-async function runEslint(string, config) {
-  const eslint = new ESLint({
-    useEslintrc: false,
-    overrideConfig: config,
-  });
-
-  const [firstResult] = await eslint.lintText(string, {filePath: 'test/_x.js'});
-
-  return firstResult.messages;
-}
+const filePath = 'test/helper/js-placeholder.js';
 
 test('success', async t => {
-  const errors = await runEslint('\'use strict\';\nconst x = true;\n\nif (x) {\n  // Not empty\n}\n', config);
-  t.is(errors.length, 0);
+  const errors = await runEslint('const x = true;\n\nif (x) {\n  // Not empty\n}\n', filePath);
+  t.deepEqual(errors, []);
 });
 
 test('throw error no-console', async t => {
-  const errors = await runEslint('\'use strict\';\nconst x = true;\n\nif (x) {\n  console.log();\n}\n', config);
-  t.true(hasRule(errors, 'no-console'), JSON.stringify(errors));
-  t.is(errors.length, 1);
+  const errors = await runEslint('const x = true;\n\nif (x) {\n  console.log();\n}\n', filePath);
+  assertError(t, errors, ['no-console']);
 });
 
 test('throw error camelcase', async t => {
-  const errors = await runEslint('\'use strict\';\nconst not_in_camelcase = true;\n\nif (not_in_camelcase) {\n  // not empty\n}\n', config);
-  t.true(hasRule(errors, 'camelcase'), JSON.stringify(errors));
-  t.is(errors.length, 2);
+  const errors = await runEslint('const not_in_camelcase = true;\n\nif (not_in_camelcase) {\n  // not empty\n}\n', filePath);
+  assertError(t, errors, ['camelcase', 'camelcase']);
 });
