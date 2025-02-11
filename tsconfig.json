@@ -1,8 +1,18 @@
 {
   "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "module": "node16",
+    "moduleDetection": "force",
+    "moduleResolution": "node16",
+    "noEmit": true,
+    "skipLibCheck": true,
     "strict": true,
+    "target": "es2022",
   },
   "include": [
-    "test"
+    "*.js",
+    "source",
+    "test",
   ]
 }
