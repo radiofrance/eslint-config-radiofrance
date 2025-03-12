@@ -53,7 +53,7 @@ export default [
       'new-cap': ['error', {
         newIsCap: true,
         capIsNew: true,
-        capIsNewExceptionPattern: '^Type\\..',
+        capIsNewExceptionPattern: '^(?:Value|Type|TypeCompiler)\\..',
       }],
 
       '@stylistic/indent': ['error', 2, {SwitchCase: 1}], // copied from eslint-config-xo-typescript/space
