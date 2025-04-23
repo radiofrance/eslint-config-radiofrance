@@ -8,6 +8,7 @@ import eslintConfigXoTypeScript from 'eslint-config-xo-typescript';
 import * as importPlugin from 'eslint-plugin-import';
 // @ts-ignore
 import promisePlugin from 'eslint-plugin-promise';
+import stylistic from '@stylistic/eslint-plugin';
 /** @import {Linter} from 'eslint' */
 
 export * from './utils.js';
@@ -32,6 +33,7 @@ export default [
   {
     files: [jsSelector, tsSelector],
     plugins: {
+      '@stylistic': stylistic,
       import: importPlugin,
       promise: promisePlugin,
     },
