@@ -1,5 +1,6 @@
 import * as path from 'node:path';
 import {includeIgnoreFile} from '@eslint/compat';
+import stylisticPlugin from '@stylistic/eslint-plugin';
 // @ts-ignore
 import eslintConfigXo from 'eslint-config-xo';
 // @ts-ignore
@@ -32,6 +33,7 @@ export default [
   {
     files: [jsSelector, tsSelector],
     plugins: {
+      '@stylistic': stylisticPlugin,
       import: importPlugin,
       promise: promisePlugin,
     },
