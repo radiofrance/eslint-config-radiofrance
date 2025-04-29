@@ -14,7 +14,7 @@ test('Finds the rule by it\'s name', t => {
   t.deepEqual(rule, ['error', 'rule2']);
 });
 
-test('Finds the last occurence of a rule', t => {
+test('Finds the first occurence of a rule', t => {
   /** @type {Linter.Config[]} */
   const config = [
     {rules: {rule1: ['off', 'rule1']}},
@@ -23,5 +23,5 @@ test('Finds the last occurence of a rule', t => {
   ];
 
   const rule = findRule(config, 'rule1');
-  t.deepEqual(rule, ['error', 'rule1']);
+  t.deepEqual(rule, ['off', 'rule1']);
 });

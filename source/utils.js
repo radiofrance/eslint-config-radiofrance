@@ -25,7 +25,7 @@ export function allowSnakeCase(configList) {
  * @param {string} ruleName
  */
 export function findRule(configList, ruleName) {
-  const rule = configList.findLast(config => config.rules?.[ruleName])?.rules?.[ruleName];
+  const rule = configList.find(config => config.rules?.[ruleName])?.rules?.[ruleName];
   assert(rule);
   return rule;
 }
