@@ -20,12 +20,19 @@ const jsSelector = '**/*.{js,cjs,mjs}';
   config.files ??= [tsSelector];
 });
 
+// Filter out problematic JSON configs that cause "allowTrailingCommas option is only available in JSONC" error
+// See: https://github.com/xojs/xo/issues/798
+/** @type {Linter.Config[]} */
+const filteredXoConfig = (/** @type {Linter.Config[]} */ (eslintConfigXo)).filter(config => !config.language?.startsWith('json/'));
+/** @type {Linter.Config[]} */
+const filteredXoTypeScriptConfig = (/** @type {Linter.Config[]} */ (eslintConfigXoTypeScript)).filter(config => !config.language?.startsWith('json/'));
+
 /** @type {Linter.Config[]} */
 export default [
   includeIgnoreFile(path.resolve(process.cwd(), '.gitignore')),
 
-  ...eslintConfigXo,
-  ...eslintConfigXoTypeScript,
+  ...filteredXoConfig,
+  ...filteredXoTypeScriptConfig,
 
   promisePlugin.configs['flat/recommended'],
 

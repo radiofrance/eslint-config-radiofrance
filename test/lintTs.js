@@ -4,7 +4,7 @@ import {assertError, runEslint} from './helper/utils.js';
 const filePath = 'test/helper/ts-placeholder.ts';
 
 test('success', async t => {
-  const errors = await runEslint('type OneType = string;const t: OneType = \'randomString\';\n', filePath);
+  const errors = await runEslint('type OneType = string; const t: OneType = \'randomString\';\n', filePath);
   t.deepEqual(errors, []);
 });
 
