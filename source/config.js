@@ -73,6 +73,9 @@ export default [
     rules: {
       // Disable this rule because we need interface and type.
       '@typescript-eslint/consistent-type-definitions': 'off',
+      // Disable theses no-unsafe rules to allow more flexibility.
+      '@typescript-eslint/no-unsafe-member-access': 'off',
+      '@typescript-eslint/no-unsafe-type-assertion': 'off',
     },
   },
 ];
