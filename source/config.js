@@ -72,7 +72,10 @@ export default [
     files: [tsSelector],
     rules: {
       // Disable this rule because we need interface and type.
-      '@typescript-eslint/consistent-type-definitions': 'off',
+      '@typescript-eslint/consistent-type-definitions': [
+        'warn',
+        'type',
+      ],
       // Disable theses no-unsafe rules to allow more flexibility.
       '@typescript-eslint/no-unsafe-member-access': 'off',
       '@typescript-eslint/no-unsafe-type-assertion': 'off',
