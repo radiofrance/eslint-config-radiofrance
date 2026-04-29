@@ -56,7 +56,8 @@
   },
   "devDependencies": {
     "@types/node": "^24.7.0",
-    "ava": "^6.1.2"
+    "ava": "^6.1.2",
+    "typescript": "^5.9.3"
   },
   "peerDependencies": {
     "eslint": ">=10.1.0"
