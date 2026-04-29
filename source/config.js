@@ -3,10 +3,6 @@ import {includeIgnoreFile} from '@eslint/compat';
 // @ts-ignore
 import eslintConfigXo from 'eslint-config-xo';
 // @ts-ignore
-import eslintConfigXoTypeScript from 'eslint-config-xo-typescript';
-// @ts-ignore
-import * as importPlugin from 'eslint-plugin-import';
-// @ts-ignore
 import promisePlugin from 'eslint-plugin-promise';
 /** @import {Linter} from 'eslint' */
 
@@ -15,31 +11,22 @@ export * from './utils.js';
 const tsSelector = '**/*.{ts,cts,mts}';
 const jsSelector = '**/*.{js,cjs,mjs}';
 
-// Prevent applying typescript config to javascript files
-/** @type {Linter.Config[]} */(eslintConfigXoTypeScript).forEach(config => {
-  config.files ??= [tsSelector];
-});
-
 // Filter out problematic JSON configs that cause "allowTrailingCommas option is only available in JSONC" error
 // See: https://github.com/xojs/xo/issues/798
-/** @type {Linter.Config[]} */
-const filteredXoConfig = (/** @type {Linter.Config[]} */ (eslintConfigXo)).filter(config => !config.language?.startsWith('json/'));
-/** @type {Linter.Config[]} */
-const filteredXoTypeScriptConfig = (/** @type {Linter.Config[]} */ (eslintConfigXoTypeScript)).filter(config => !config.language?.startsWith('json/'));
+const xoConfigs = /** @type {Linter.Config[]} */ (eslintConfigXo({space: 2}))
+  .filter(config => !config.language?.startsWith('json/'));
 
 /** @type {Linter.Config[]} */
 export default [
   includeIgnoreFile(path.resolve(process.cwd(), '.gitignore')),
 
-  ...filteredXoConfig,
-  ...filteredXoTypeScriptConfig,
+  ...xoConfigs,
 
   promisePlugin.configs['flat/recommended'],
 
   {
     files: [jsSelector, tsSelector],
     plugins: {
-      import: importPlugin,
       promise: promisePlugin,
     },
     rules: {
@@ -51,28 +38,27 @@ export default [
       // Override from eslint-config-xo to avoid unnecessary newline in file.
       '@stylistic/object-curly-newline': ['error', {consistent: true}],
       // For each require/import, we should a explicit file extension.
-      'import/extensions': ['error', 'ignorePackages'],
+      'import-x/extensions': ['error', 'ignorePackages'],
       // No duplicate in import
-      'import/no-duplicates': 'error',
+      'import-x/no-duplicates': 'error',
       // Order import by alphabet and groups ('builtin', 'external', 'internal', etc)
-      'import/order': ['error', {alphabetize: {order: 'asc'}}],
+      'import-x/order': ['error', {alphabetize: {order: 'asc'}}],
       // Override from eslint-config-xo to allow Typebox usage.
       'new-cap': ['error', {
         newIsCap: true,
         capIsNew: true,
         capIsNewExceptionPattern: '^(?:Value|Type|TypeCompiler)\\..',
       }],
-
-      '@stylistic/indent': ['error', 2, {SwitchCase: 1}], // copied from eslint-config-xo-typescript/space
-      '@stylistic/indent-binary-ops': ['error', 2], // was not set in eslint-config-xo-typescript/space
+      // Add SwitchCase indent on top of xo's space:2 default.
+      '@stylistic/indent': ['error', 2, {SwitchCase: 1}],
     },
   },
 
   {
     files: [tsSelector],
     rules: {
-      // Disable this rule because we need interface and type.
-      '@typescript-eslint/consistent-type-definitions': 'off',
+      // Use type instead of interface as per global instructions.
+      '@typescript-eslint/consistent-type-definitions': ['warn', 'type'],
       // Disable theses no-unsafe rules to allow more flexibility.
       '@typescript-eslint/no-unsafe-member-access': 'off',
       '@typescript-eslint/no-unsafe-type-assertion': 'off',
