@@ -50,8 +50,6 @@ const config = [
         capIsNew: true,
         capIsNewExceptionPattern: String.raw`^(?:Value|Type|TypeCompiler)\..`,
       }],
-      // Add SwitchCase indent on top of xo's space:2 default.
-      '@stylistic/indent': ['error', 2, {SwitchCase: 1}],
     },
   },
 
