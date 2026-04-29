@@ -1,4 +1,5 @@
-import * as path from 'node:path';
+import path from 'node:path';
+import process from 'node:process';
 import {includeIgnoreFile} from '@eslint/compat';
 // @ts-ignore
 import eslintConfigXo from 'eslint-config-xo';
@@ -17,7 +18,7 @@ const xoConfigs = /** @type {Linter.Config[]} */ (eslintConfigXo({space: 2}))
   .filter(config => !config.language?.startsWith('json/'));
 
 /** @type {Linter.Config[]} */
-export default [
+const config = [
   includeIgnoreFile(path.resolve(process.cwd(), '.gitignore')),
 
   ...xoConfigs,
@@ -47,7 +48,7 @@ export default [
       'new-cap': ['error', {
         newIsCap: true,
         capIsNew: true,
-        capIsNewExceptionPattern: '^(?:Value|Type|TypeCompiler)\\..',
+        capIsNewExceptionPattern: String.raw`^(?:Value|Type|TypeCompiler)\..`,
       }],
       // Add SwitchCase indent on top of xo's space:2 default.
       '@stylistic/indent': ['error', 2, {SwitchCase: 1}],
@@ -65,3 +66,5 @@ export default [
     },
   },
 ];
+
+export default config;
