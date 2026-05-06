@@ -1,6 +1,6 @@
 # eslint-config-radiofrance
 
-> ESLint [shareable config](https://eslint.org/docs/latest/extend/shareable-configs.html) extend from [eslint-config-xo](https://github.com/xojs/eslint-config-xo) and [eslint-config-xo-typescript](https://github.com/xojs/eslint-config-xo-typescript)
+> ESLint [shareable config](https://eslint.org/docs/latest/extend/shareable-configs.html) extend from [eslint-config-xo](https://github.com/xojs/eslint-config-xo)
 
 ## Install
 
@@ -10,21 +10,24 @@ $ npm install --save-dev eslint-config-radiofrance
 
 ## Usage
 
-Add some ESLint config to your `package.json`:
+Add ESLint config to your `eslint.config.js`:
 
-```json
-{
-  "name": "my-awesome-project",
-  "eslintConfig": {
-    "extends": "radiofrance"
-  }
-}
+```js
+import eslintConfigRadiofrance, {allowNullType, allowSnakeCase} from 'eslint-config-radiofrance';
+
+allowNullType(eslintConfigRadiofrance);
+allowSnakeCase(eslintConfigRadiofrance);
+
+const config = [
+  ...eslintConfigRadiofrance,
+];
+
+export default config;
 ```
 
 ## Related
 
 - [eslint-config-xo](https://github.com/xojs/eslint-config-xo) - ESLint shareable config for XO
-- [eslint-config-xo-typescript](https://github.com/xojs/eslint-config-xo-typescript) - ESLint shareable config for TypeScript to be used with eslint-config-xo
 
 ## License
 
