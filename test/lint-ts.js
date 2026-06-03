@@ -22,3 +22,8 @@ test('throw error no-inferrable-types', async t => {
   const errors = await runEslint('const foo: number = 5;\n', filePath);
   assertError(t, errors, ['@typescript-eslint/no-inferrable-types']);
 });
+
+test('throw error import-x/extensions on a .js relative import', async t => {
+  const errors = await runEslint('import foo from \'./bar.js\';\n\nif (foo) {\n  // not empty\n}\n', filePath);
+  assertError(t, errors, ['import-x/extensions']);
+});
