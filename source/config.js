@@ -56,6 +56,8 @@ const config = [
   {
     files: [tsSelector],
     rules: {
+      // Force the `.ts` extension and forbid `.js` in relative imports.
+      'import-x/extensions': ['error', 'ignorePackages', {js: 'never', ts: 'always'}],
       // Use type instead of interface as per global instructions.
       '@typescript-eslint/consistent-type-definitions': ['warn', 'type'],
       // Disable theses no-unsafe rules to allow more flexibility.
