@@ -1,9 +1,7 @@
 import path from 'node:path';
 import process from 'node:process';
 import {includeIgnoreFile} from '@eslint/compat';
-// @ts-ignore
 import eslintConfigXo from 'eslint-config-xo';
-// @ts-ignore
 import promisePlugin from 'eslint-plugin-promise';
 
 export * from './utils.js';
