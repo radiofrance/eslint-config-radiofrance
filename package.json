@@ -14,9 +14,16 @@
   },
   "type": "module",
   "main": "source/config.js",
+  "types": "source/config.d.ts",
+  "exports": {
+    "types": "./source/config.d.ts",
+    "default": "./source/config.js"
+  },
   "scripts": {
+    "build": "rm -f source/*.d.ts && tsc --project tsconfig.build.json",
     "build-check": "tsc --noEmit",
     "lint": "eslint",
+    "prepack": "npm run build",
     "test": "ava"
   },
   "files": [
