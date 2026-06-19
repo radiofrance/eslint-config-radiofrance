@@ -1,11 +1,8 @@
 import path from 'node:path';
 import process from 'node:process';
 import {includeIgnoreFile} from '@eslint/compat';
-// @ts-ignore
 import eslintConfigXo from 'eslint-config-xo';
-// @ts-ignore
 import promisePlugin from 'eslint-plugin-promise';
-/** @import {Linter} from 'eslint' */
 
 export * from './utils.js';
 
@@ -14,10 +11,9 @@ const jsSelector = '**/*.{js,cjs,mjs}';
 
 // Filter out problematic JSON configs that cause "allowTrailingCommas option is only available in JSONC" error
 // See: https://github.com/xojs/xo/issues/798
-const xoConfigs = /** @type {Linter.Config[]} */ (eslintConfigXo({space: 2}))
+const xoConfigs = eslintConfigXo({space: 2})
   .filter(config => !config.language?.startsWith('json/'));
 
-/** @type {Linter.Config[]} */
 const config = [
   includeIgnoreFile(path.resolve(process.cwd(), '.gitignore')),
 

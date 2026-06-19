@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-radiofrance",
-  "version": "8.1.0",
+  "version": "8.2.0-1",
   "description": "ESLint shareable config for Radio France",
   "license": "CECILL-B",
   "repository": "radiofrance/eslint-config-radiofrance",
@@ -14,6 +14,11 @@
   },
   "type": "module",
   "main": "source/config.js",
+  "types": "source/config.d.ts",
+  "exports": {
+    "types": "./source/config.d.ts",
+    "default": "./source/config.js"
+  },
   "scripts": {
     "build-check": "tsc --noEmit",
     "lint": "eslint",
