@@ -2,7 +2,7 @@ import {expect, test} from 'vitest';
 import {findRule} from '../source/utils.js';
 /** @import { Linter } from 'eslint' */
 
-test('Finds the rule by it\'s name', () => {
+test("Finds the rule by it's name", () => {
   /** @type {Linter.Config[]} */
   const config = [
     {rules: {rule1: ['off', 'rule1']}},
