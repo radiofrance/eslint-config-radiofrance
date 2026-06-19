@@ -11,6 +11,6 @@ export default defineConfig({
       reporter: ['text-summary', 'html', 'cobertura', 'lcov'],
     },
     restoreMocks: true,
-    testTimeout: inspector.url() ? 0 : undefined,
+    testTimeout: inspector.url() ? 0 : 30_000,
   },
 });
