@@ -1,8 +1,8 @@
-import test from 'ava';
+import {expect, test} from 'vitest';
 import {findRule} from '../source/utils.js';
 /** @import { Linter } from 'eslint' */
 
-test('Finds the rule by it\'s name', t => {
+test('Finds the rule by it\'s name', () => {
   /** @type {Linter.Config[]} */
   const config = [
     {rules: {rule1: ['off', 'rule1']}},
@@ -11,10 +11,10 @@ test('Finds the rule by it\'s name', t => {
   ];
 
   const rule = findRule(config, 'rule2');
-  t.deepEqual(rule, ['error', 'rule2']);
+  expect(rule).toEqual(['error', 'rule2']);
 });
 
-test('Finds the first occurence of a rule', t => {
+test('Finds the first occurence of a rule', () => {
   /** @type {Linter.Config[]} */
   const config = [
     {rules: {rule1: ['off', 'rule1']}},
@@ -23,5 +23,5 @@ test('Finds the first occurence of a rule', t => {
   ];
 
   const rule = findRule(config, 'rule1');
-  t.deepEqual(rule, ['off', 'rule1']);
+  expect(rule).toEqual(['off', 'rule1']);
 });
