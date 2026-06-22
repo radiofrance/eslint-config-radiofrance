@@ -2,9 +2,10 @@ import assert from 'node:assert/strict';
 
 export function allowNullType(configList) {
   // Alter this rule to allow usage of the null type.
-  const noRestrictedTypes = /** @type {[unknown, {types: Record<string, unknown>}]} */ (
-    findRule(configList, '@typescript-eslint/no-restricted-types')
-  );
+  const noRestrictedTypes =
+    /** @type {[unknown, {types: Record<string, unknown>}]} */ (
+      findRule(configList, '@typescript-eslint/no-restricted-types')
+    );
   delete noRestrictedTypes[1].types.null;
 }
 
@@ -16,7 +17,9 @@ export function allowSnakeCase(configList) {
 }
 
 export function findRule(configList, ruleName) {
-  const rule = configList.find(config => config.rules?.[ruleName])?.rules?.[ruleName];
+  const rule = configList.find((config) => config.rules?.[ruleName])?.rules?.[
+    ruleName
+  ];
   assert.ok(rule);
   return rule;
 }

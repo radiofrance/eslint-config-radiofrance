@@ -9,10 +9,10 @@ export * from './utils.js';
 const tsSelector = '**/*.{ts,cts,mts}';
 const jsSelector = '**/*.{js,cjs,mjs}';
 
-// Filter out problematic JSON configs that cause "allowTrailingCommas option is only available in JSONC" error
-// See: https://github.com/xojs/xo/issues/798
-const xoConfigs = eslintConfigXo({space: 2})
-  .filter(config => !config.language?.startsWith('json/'));
+// `prettier: true` enables the `prettier/prettier` rule (so `eslint --fix` formats)
+// and disables the conflicting `@stylistic` rules. It also brings in xo's JSON, JSONC,
+// JSON5 and Markdown (GFM) configs.
+const xoConfigs = eslintConfigXo({space: 2, prettier: true});
 
 const config = [
   includeIgnoreFile(path.resolve(process.cwd(), '.gitignore')),
@@ -32,8 +32,6 @@ const config = [
       'capitalized-comments': 'off',
       // Console should not be used in project. Instead use our internal logger.
       'no-console': 'error',
-      // Override from eslint-config-xo to avoid unnecessary newline in file.
-      '@stylistic/object-curly-newline': ['error', {consistent: true}],
       // For each require/import, we should a explicit file extension.
       'import-x/extensions': ['error', 'ignorePackages'],
       // No duplicate in import
@@ -41,11 +39,14 @@ const config = [
       // Order import by alphabet and groups ('builtin', 'external', 'internal', etc)
       'import-x/order': ['error', {alphabetize: {order: 'asc'}}],
       // Override from eslint-config-xo to allow Typebox usage.
-      'new-cap': ['error', {
-        newIsCap: true,
-        capIsNew: true,
-        capIsNewExceptionPattern: String.raw`^(?:Value|Type|TypeCompiler)\..`,
-      }],
+      'new-cap': [
+        'error',
+        {
+          newIsCap: true,
+          capIsNew: true,
+          capIsNewExceptionPattern: String.raw`^(?:Value|Type|TypeCompiler)\..`,
+        },
+      ],
     },
   },
 
@@ -53,7 +54,11 @@ const config = [
     files: [tsSelector],
     rules: {
       // Force the `.ts` extension and forbid `.js` in relative imports.
-      'import-x/extensions': ['error', 'ignorePackages', {js: 'never', ts: 'always'}],
+      'import-x/extensions': [
+        'error',
+        'ignorePackages',
+        {js: 'never', ts: 'always'},
+      ],
       // Use type instead of interface as per global instructions.
       '@typescript-eslint/consistent-type-definitions': ['warn', 'type'],
       // Disable theses no-unsafe rules to allow more flexibility.

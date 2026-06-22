@@ -2,10 +2,17 @@
 
 > ESLint [shareable config](https://eslint.org/docs/latest/extend/shareable-configs.html) extend from [eslint-config-xo](https://github.com/xojs/eslint-config-xo)
 
+## Features
+
+- Lint JavaScript and TypeScript files.
+- Lint JSON, JSONC and JSON5 files (`@eslint/json`).
+- Lint Markdown files in GitHub-Flavored Markdown (`@eslint/markdown`).
+- Format all code with Prettier through the `prettier/prettier` rule, so `eslint --fix` formats your files. Prettier is bundled, no extra install needed.
+
 ## Install
 
-```
-$ npm install --save-dev eslint-config-radiofrance
+```sh
+npm install --save-dev eslint-config-radiofrance
 ```
 
 ## Usage
